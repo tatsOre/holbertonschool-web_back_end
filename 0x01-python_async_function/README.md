@@ -8,7 +8,8 @@
 * How to use the `random` module
 
 ### Resources:
-* []()
+* [Async IO in Python: A Complete Walkthrough](https://realpython.com/async-io-python/)
+* [asyncio — Asynchronous I/O library](https://docs.python.org/3/library/asyncio.html)
 
 ### Author:
 * Tatiana Orejuela Zapata | [Github](https://github.com/tatsOre)
