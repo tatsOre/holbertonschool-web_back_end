@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Module for 7. Complex types - string and int/float to tuple.
-0x00. Python - Variable Annotations
+Module for 0. The basics of async.
+0x01. Python - Async
 Holberton Web Stack programming Spec ― Back-end
 """
 import asyncio
