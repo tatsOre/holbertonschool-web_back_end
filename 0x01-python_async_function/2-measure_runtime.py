@@ -5,7 +5,6 @@ Module for 2. Measure the runtime.
 Holberton Web Stack programming Spec ― Back-end
 """
 import asyncio
-import random
 import time
 
 
@@ -23,7 +22,7 @@ def measure_time(n: int, max_delay: int) -> float:
     Returns
     -------
         float
-            average elapsed run time
+            average elapsed runtime
     """
     start = time.perf_counter()
     asyncio.run(wait_n(n, max_delay))
