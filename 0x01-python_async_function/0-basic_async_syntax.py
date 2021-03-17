@@ -7,6 +7,7 @@ Holberton Web Stack programming Spec ― Back-end
     random.random() -> Random float:  0.0 <= x < 1.0
     random.uniform(a, b) -> Random float:  a <= x < b
 """
+
 import asyncio
 import random
 
