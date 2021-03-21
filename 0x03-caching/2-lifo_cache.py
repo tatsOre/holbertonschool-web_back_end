@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Module for 1. FIFO caching
+Module for 2. LIFO Caching
 0x03. Caching
 Holberton Web Stack programming Spec ― Back-end
 First In First Out - Queue
@@ -10,14 +10,14 @@ from collections import deque
 BaseCaching = __import__('base_caching').BaseCaching
 
 
-class FIFOCache(BaseCaching):
+class LIFOCache(BaseCaching):
     """
-    Defines a the class FIFOCache, which inherits from BaseCaching
-    and is a caching system (FIFO algorithm).
+    Defines a the class LIFOCache, which inherits from BaseCaching
+    and is a caching system (LIFO algorithm).
     """
     def __init__(self):
         super().__init__()
-        self.__queue = deque()
+        self.__stack = deque()
 
     def put(self, key, item):
         """
@@ -26,11 +26,11 @@ class FIFOCache(BaseCaching):
         """
         if key and item:
             if key in self.cache_data:
-                self.__queue.remove(key)
+                self.__stack.remove(key)
             elif len(self.cache_data) >= BaseCaching.MAX_ITEMS:
                 self.discard(key)
 
-            self.__queue.append(key)
+            self.__stack.append(key)
             self.cache_data[key] = item
 
     def get(self, key):
@@ -42,8 +42,8 @@ class FIFOCache(BaseCaching):
 
     def discard(self, key):
         """
-        Discards item according cache replacement policies: FIFO
+        Discards item according cache replacement policies: LIFO
         """
-        removed = self.__queue.popleft()
+        removed = self.__stack.pop()
         del self.cache_data[removed]
         print(f"DISCARD: {removed}")
