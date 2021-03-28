@@ -21,4 +21,4 @@ def download_csv(URL: str, FILENAME: str):
         csv_file.write(content)
 
 
-download_csv(URL, FILENAME)
+download_csv(URL, DATA_FILE)
