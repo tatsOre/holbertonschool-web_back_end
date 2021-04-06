@@ -54,7 +54,7 @@ def session_logout():
 
         Return:
         ------
-        - Empty Response Object with status code 200 or Abort
+      - Empty Response Object with status code 200 or Abort
     """
     from api.v1.app import auth
     is_logged = auth.destroy_session(request)
