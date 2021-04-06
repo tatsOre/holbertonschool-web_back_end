@@ -53,13 +53,13 @@ class Auth:
         """
         return None
 
-    def session_cookie(self, request=None):
+    def session_cookie(self, request=None) -> str:
         """
         Args:
             request - Flask request object
         Returns:
         -------
-            None or cookie value from a request
+            None or cookie value (session id) from a request
         """
         if not request:
             return None
