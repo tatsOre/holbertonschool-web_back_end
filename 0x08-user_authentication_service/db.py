@@ -61,7 +61,7 @@ class DB:
 
         Args:
         ----
-            arbitrary keyworded arguments 
+            arbitrary keyworded arguments
         Returns:
         -------
             `User` object
@@ -83,7 +83,7 @@ class DB:
         Args:
         ----
             user_id
-            arbitrary keyworded arguments 
+            arbitrary keyworded arguments
         Returns:
         -------
             None
