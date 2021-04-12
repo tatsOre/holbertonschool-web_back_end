@@ -55,8 +55,17 @@ class DB:
         self._session.commit()
         return user
 
-    def find_user_by(self, **kwargs):
-        """ Documentation for this method """
+    def find_user_by(self, **kwargs) -> User:
+        """
+        Searches filtered by the method’s input arguments.
+
+        Args:
+        ----
+            arbitrary keyworded arguments 
+        Returns:
+        -------
+            `User` object
+        """
         if not kwargs:
             raise InvalidRequestError
         if not all(key in User.__table__.columns for key in kwargs):
@@ -66,9 +75,19 @@ class DB:
             raise NoResultFound
         return row
 
-    def update_user(self, user_id: int, **kwargs):
-        """ Documentation for this method """
-        # check cause changed:
+    def update_user(self, user_id: int, **kwargs) -> None:
+        """
+        Locates the user to update, then will update the user’s
+        attributes as passed in the method’s arguments and commit
+        changes to the database.
+        Args:
+        ----
+            user_id
+            arbitrary keyworded arguments 
+        Returns:
+        -------
+            None
+        """
         try:
             user = self.find_user_by(id=user_id)
             for key, value in kwargs.items():
