@@ -10,8 +10,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import InvalidRequestError
 from sqlalchemy.orm.exc import NoResultFound
 
-from user import Base
-from user import User
+from user import Base, User
 
 
 class DB:
@@ -90,7 +89,7 @@ class DB:
         """
         user = self.find_user_by(id=user_id)
         for key, value in kwargs.items():
-            if not hasattr(user, key):
+            if key not in User.__table__.columns:
                 raise ValueError
             setattr(user, key, value)
         self._session.commit()
