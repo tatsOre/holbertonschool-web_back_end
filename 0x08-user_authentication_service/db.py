@@ -14,7 +14,7 @@ from user import Base, User
 
 
 class DB:
-
+    """ Defines Engine and Session instances for the database """
     def __init__(self):
         """ Constructor that sets up the application """
         self._engine = create_engine("sqlite:///a.db", echo=False)
