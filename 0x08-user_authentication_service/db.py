@@ -17,7 +17,6 @@ from user import User
 class DB:
 
     def __init__(self):
-        """ Constructor that sets up the application """
         self._engine = create_engine("sqlite:///a.db", echo=False)
         Base.metadata.drop_all(self._engine)
         Base.metadata.create_all(self._engine)
@@ -25,14 +24,6 @@ class DB:
 
     @property
     def _session(self):
-        """
-        Defines a Session class which will serve as a factory for new
-        Session objects and connects it to the engine.
-
-        Returns:
-        -------
-            `DBSession` instance as a private property
-        """
         if self.__session is None:
             DBSession = sessionmaker(bind=self._engine)
             self.__session = DBSession()
