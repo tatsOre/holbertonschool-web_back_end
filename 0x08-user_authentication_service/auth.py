@@ -115,5 +115,3 @@ class Auth:
                                  reset_token=None)
         except NoResultFound:
             raise ValueError
-        finally:
-            return None
