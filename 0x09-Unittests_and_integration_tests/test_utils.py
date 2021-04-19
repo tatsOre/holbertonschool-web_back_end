@@ -6,7 +6,7 @@ Holberton Web Stack programming Spec ― Back-end
 """
 import unittest
 from parameterized import parameterized
-from utils import access_nested_map, get_json
+from utils import access_nested_map, get_json, memoize
 from unittest.mock import patch, Mock
 
 
@@ -14,7 +14,7 @@ class TestAccessNestedMap(unittest.TestCase):
     """ Defines the TestAccessNestedMap Class """
     @parameterized.expand([
         ({"a": 1}, ("a",), 1),
-        ({"a": {"b": 2}}, ("a",), {"b": 2}),
+        ({"a": {"b": 2}}, ("a",), {'b': 2}),
         ({"a": {"b": 2}}, ("a", "b"), 2)
     ])
     def test_access_nested_map(self, nested_map, path, expected):
@@ -59,3 +59,25 @@ class TestGetJson(unittest.TestCase):
             mock_get.return_value.json.return_value = test_payload
             self.assertEqual(get_json(test_url), test_payload)
         """
+
+
+class TestMemoize(unittest.TestCase):
+    """ Defines the TestMemoize Class """
+    def test_memoize(self):
+        """ Method Documentation """
+        class TestClass:
+            """ Class Documentation """
+            def a_method(self):
+                """ Method Documentation """
+                return 42
+
+            @memoize
+            def a_property(self):
+                """ Method Documentation """
+                return self.a_method()
+
+        with patch.object(TestClass, 'a_method') as mock_method:
+            test = TestClass()
+            test.a_property
+            test.a_property
+            mock_method.assert_called_once()
