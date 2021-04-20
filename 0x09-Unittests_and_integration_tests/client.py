@@ -13,12 +13,12 @@ from utils import (
 )
 
 
-class GitHubOrgClient:
+class GithubOrgClient:
     """ A Github org client """
     ORG_URL = "https://api.github.com/orgs/{org}"
 
     def __init__(self, org_name: str) -> None:
-        """Init method of GitHubOrgClient"""
+        """ Init method of GithubOrgClient """
         self._org_name = org_name
 
     @memoize
@@ -39,6 +39,7 @@ class GitHubOrgClient:
     def public_repos(self, license: str = None) -> List[str]:
         """Public repos"""
         json_payload = self.repos_payload
+        print(json_payload)
         public_repos = [
             repo["name"] for repo in json_payload
             if license is None or self.has_license(repo, license)
