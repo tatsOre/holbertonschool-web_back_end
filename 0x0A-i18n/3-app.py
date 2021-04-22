@@ -5,7 +5,7 @@ Module for 3-app.py
 Holberton Web Stack programming Spec ― Back-end
 """
 from flask import Flask, render_template, request
-from flask_babel import Babel, gettext, _
+from flask_babel import Babel, gettext
 
 app = Flask(__name__)
 babel = Babel(app)
@@ -28,7 +28,7 @@ def hello_world():
 
 
 @babel.localeselector
-def get_locale() -> str:
+def get_locale():
     """
     Determines the best match language according suppported languages
     """
