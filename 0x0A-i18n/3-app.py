@@ -22,13 +22,13 @@ app.config.from_object(Config)
 
 
 @app.route('/', methods=['GET'], strict_slashes=False)
-def hello_world():
+def hello_world() -> str:
     """ Welcome HTML page """
     return render_template('3-index.html')
 
 
 @babel.localeselector
-def get_locale():
+def get_locale() -> str:
     """
     Determines the best match language according suppported languages
     """
