@@ -62,7 +62,8 @@ class Cache:
         self._redis.set(key, data)
         return key
 
-    def get(self, key: str, fn: Optional[Callable] = None):
+    def get(self, key: str, fn: Optional[Callable] = None) ->\
+            Union[str, bytes, int, float]:
         """
         Gets a value from the redis data instance and converts it back
         to the desired format using the passed Callable `fn`
@@ -73,3 +74,11 @@ class Cache:
         if data and fn:
             return fn(data)
         return data
+
+    def get_str(self, data: bytes) -> str:
+        """ Converts to string data type """
+        return data.decode("utf-8")
+
+    def get_int(self, data: bytes) -> int:
+        """ Converts to int data type """
+        return int(data)
