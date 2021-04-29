@@ -8,7 +8,7 @@ CREATE
     BEGIN
         IF NEW.email <> OLD.email
             THEN
-                SET NEW.valid_email = !OLD.valid_email;
+                SET NEW.valid_email = 0;
         END IF;
     END$$
 DELIMITER ;
