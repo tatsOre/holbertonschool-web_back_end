@@ -4,7 +4,7 @@
 
 
 ### Resources:
-
+[MySQL Insert If Not Exists](https://itecsoftware.com/insert-if-not-exists-in-mysql)
 
 ### Author:
 * Tatiana Orejuela Zapata | [Github](https://github.com/tatsOre)
