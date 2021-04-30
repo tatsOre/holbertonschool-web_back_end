@@ -8,7 +8,7 @@ CREATE
         IN score FLOAT
     )
 BEGIN
-    INSERT INTO `projects` (name)
+    INSERT INTO projects (name)
     SELECT project_name from DUAL
     WHERE NOT EXISTS (SELECT * FROM projects WHERE name = project_name);
 

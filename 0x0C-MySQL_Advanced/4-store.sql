@@ -2,7 +2,7 @@
 -- Creates a trigger that decreases the quantity of an item after adding a new order
 DELIMITER $$
 CREATE
-    TRIGGER `decreases_items_quantity` AFTER INSERT ON orders
+    TRIGGER decreases_items_quantity AFTER INSERT ON orders
     FOR EACH ROW
         BEGIN
         UPDATE items
