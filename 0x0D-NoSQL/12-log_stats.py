@@ -24,9 +24,10 @@ def log_stats():
     nginx_coll = client.logs.nginx
 
     print(f"{count_documents(nginx_coll)} logs")
+    print("Methods:")
     for method in ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']:
         no_docs = count_documents(nginx_coll, {'method': method})
-        print(f"\tmethod {method} {no_docs}")
+        print(f"\tmethod {method}: {no_docs}")
 
     check = count_documents(nginx_coll, {'method': 'GET', 'path': '/status'})
     print(f"{check} status check")
