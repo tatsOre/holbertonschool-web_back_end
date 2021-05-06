@@ -3,16 +3,17 @@ export default function createIteratorObject(report) {
   return {
     [Symbol.iterator]() {
       let current = 0;
-      let last = allEmp.length;
+      const last = allEmp.length;
       return {
         next() {
           if (current < last) {
-            return { done: false, value: allEmp[current++] };
-          } else {
-            return { done: true, value: undefined };
+            const ret = { done: false, value: allEmp[current] };
+            current += 1;
+            return ret;
           }
-        }
+          return { done: true, value: undefined };
+        },
       };
-    }
+    },
   };
 }
