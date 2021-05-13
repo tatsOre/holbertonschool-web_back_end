@@ -3,6 +3,7 @@ export default class Airport {
     this.name = name;
     this.code = code;
   }
+
   set name(value) {
     this._name = value;
   }
