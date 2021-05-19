@@ -6,7 +6,7 @@ export default function cleanSet(set, startString) {
   function isStr(word) {
     return word !== '' && (typeof word === 'string');
   }
-  
+
   const cleanSet = [];
 
   [...set].forEach((word) => {
