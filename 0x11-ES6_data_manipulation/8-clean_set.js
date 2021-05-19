@@ -1,12 +1,18 @@
 export default function cleanSet(set, startString) {
-  if (!startString) return '';
+  if (!set || !startString || !(typeof startString === 'string')) {
+    return '';
+  }
 
-  const cleanSet = [...set].map((word) => {
-    let sliced;
-    if (word.startsWith(startString)) {
-      sliced = word.substring(startString.length);
+  function isStr(word) {
+    return word !== '' && (typeof word === 'string');
+  }
+  
+  const cleanSet = [];
+
+  [...set].forEach((word) => {
+    if (isStr(word) && word.startsWith(startString)) {
+      cleanSet.push(word.replace(startString, ''));
     }
-    return sliced;
   });
-  return cleanSet.join('-').slice(0, -1);
+  return cleanSet.join('-');
 }
