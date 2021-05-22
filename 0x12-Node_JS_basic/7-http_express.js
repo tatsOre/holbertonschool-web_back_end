@@ -17,4 +17,4 @@ app.get('/students', async (req, res) => {
 
 app.listen(port);
 
-export default app;
+module.exports = app;
