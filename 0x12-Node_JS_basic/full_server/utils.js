@@ -3,7 +3,7 @@ import { readFile } from 'fs';
 const readDatabase = (filepath) => new Promise((resolve, reject) => {
   readFile(filepath, 'utf-8', (err, data) => {
     if (err) {
-      return reject(err);
+      return reject(new Error('Cannot load the database'));
     }
 
     const dataSet = data.split('\n');

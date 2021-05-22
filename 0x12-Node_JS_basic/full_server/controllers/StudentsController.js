@@ -13,23 +13,23 @@ class StudentsController {
         }
         response.status(200).send(`${firstline}\n${message.join('\n')}`);
       })
-      .catch(() => {
-        response.status(500).send('Cannot load the database');
+      .catch((error) => {
+        response.status(500).send(error.message);
       });
   }
 
   static getAllStudentsByMajor(request, response) {
+    const MAJOR = request.params.major;
     readDatabase(database)
       .then((studentsPerFields) => {
-        const MAJOR = request.params.major;
         if (!Object.keys(studentsPerFields).includes(MAJOR)) {
           response.status(500).send('Major parameter must be CS or SWE');
         }
         const message = `List: ${studentsPerFields[MAJOR].join(', ')}`;
         response.status(200).send(message);
       })
-      .catch(() => {
-        response.status(500).send('Cannot load the database');
+      .catch((error) => {
+        response.status(500).send(error.message);
       });
   }
 }
