@@ -11,12 +11,14 @@ const app = http.createServer(async (req, res) => {
     res.end('Hello Holberton School!');
   } else if (req.url === '/students') {
     try {
-      const { totalMsg, csMsg, sweMsg } = await countStudents(DATABASE);
-      const response = `${totalMsg}\n${csMsg}\n${sweMsg}`;
+      const { students, csStudents, sweStudents } = await countStudents(DATABASE);
       res.write('This is the list of our students\n');
-      res.end(response);
+      res.write(`Number of students: ${students.length}\n`);
+      res.write(`Number of students in CS: ${csStudents.length}. List: ${csStudents.join(', ')}\n`);
+      res.write(`Number of students in SWE: ${sweStudents.length}. List: ${sweStudents.join(', ')}`);
+      res.end();
     } catch (error) {
-      res.end(error.toString());
+      res.end(error.message);
     }
   } else {
     res.writeHead(404);
