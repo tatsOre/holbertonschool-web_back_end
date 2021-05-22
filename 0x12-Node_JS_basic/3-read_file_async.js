@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-async function countStudents(path) {
+const countStudents = async (path) => {
   let data = '';
 
   try {
@@ -25,12 +25,11 @@ async function countStudents(path) {
   const sweStudents = students.filter((s) => s.field === 'SWE')
     .map((s) => s.firstname);
 
-  const totalMsg = `Number of students: ${students.length}`;
-  const csMsg = `Number of students in CS: ${csStudents.length}. List: ${csStudents.join(', ')}`;
-  const sweMsg = `Number of students in SWE: ${sweStudents.length}. List: ${sweStudents.join(', ')}`;
-  console.log(`${totalMsg}\n${csMsg}\n${sweMsg}`);
+  console.log(`Number of students: ${students.length}`);
+  console.log(`Number of students in CS: ${csStudents.length}. List: ${csStudents.join(', ')}`);
+  console.log(`Number of students in SWE: ${sweStudents.length}. List: ${sweStudents.join(', ')}`);
 
-  return { totalMsg, csMsg, sweMsg };
+  return { students, csStudents, sweStudents };
 };
 
 module.exports = countStudents;
