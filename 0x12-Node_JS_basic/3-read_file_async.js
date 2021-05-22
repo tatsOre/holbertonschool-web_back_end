@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const countStudents = async (path) => {
+async function countStudents(path) {
   let data = '';
 
   try {
