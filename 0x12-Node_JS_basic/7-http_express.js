@@ -9,10 +9,20 @@ app.get('/', (req, res) => {
   res.send('Hello Holberton School!');
 });
 
-app.get('/students', async (req, res) => {
-  const { totalMsg, csMsg, sweMsg } = await countStudents(database);
-  const response = `${totalMsg}\n${csMsg}\n${sweMsg}`;
-  res.send(response);
+app.get('/students', (req, res) => {
+  countStudents(database)
+    .then((data) => {
+      const { students, csStudents, sweStudents } = data;
+      res.write('This is the list of our students\n');
+      res.write(`Number of students: ${students.length}\n`);
+      res.write(`Number of students in CS: ${csStudents.length}. List: ${csStudents.join(', ')}\n`);
+      res.write(`Number of students in SWE: ${sweStudents.length}. List: ${sweStudents.join(', ')}`);
+      res.statusCode = 200;
+      res.end();
+    })
+    .catch((error) => {
+      res.status(500).send(error.message);
+    });
 });
 
 app.listen(port);
