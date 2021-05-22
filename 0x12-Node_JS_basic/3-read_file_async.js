@@ -1,11 +1,14 @@
 const fs = require('fs');
 
 const countStudents = async (path) => {
-  if (!fs.existsSync(path)) {
-    throw Error('Cannot load the database');
+  let data = '';
+
+  try {
+    data = await fs.promises.readFile(path, 'utf-8');
+  } catch (error) {
+    throw new Error('Cannot load the database');
   }
 
-  const data = await fs.promises.readFile(path, 'utf-8');
   const dataSet = data.split('\n').slice(1);
   const normalized = dataSet.map((line) => line.split(','))
     .filter((student) => student.length === 4);
