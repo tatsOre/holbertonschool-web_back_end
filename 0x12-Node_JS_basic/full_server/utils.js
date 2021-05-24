@@ -9,9 +9,14 @@ const readDatabase = (filepath) => new Promise((resolve, reject) => {
     const dataSet = data.split('\n');
     const normalized = dataSet.map((line) => line.split(','))
       .filter((student) => student.length === 4);
-    const headers = normalized.shift();
-    const FIRSTNAME = headers.indexOf('firstname'); // 0
-    const FIELD = headers.indexOf('field'); // 4
+
+    let FIRSTNAME = 0;
+    let FIELD = 3;
+    if (normalized[0].includes('firstname')) {
+      const headers = normalized.shift();
+      FIRSTNAME = headers.indexOf('firstname'); // 0
+      FIELD = headers.indexOf('field'); // 3
+    }
 
     const studentsPerFields = normalized.reduce((acc, student) => {
       const key = student[FIELD];
