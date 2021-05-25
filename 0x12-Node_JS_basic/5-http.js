@@ -10,9 +10,9 @@ const app = http.createServer(async (req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.end('Hello Holberton School!');
   } else if (req.url === '/students') {
+    res.write('This is the list of our students\n');
     try {
       const { students, csStudents, sweStudents } = await countStudents(DATABASE);
-      res.write('This is the list of our students\n');
       res.write(`Number of students: ${students.length}\n`);
       res.write(`Number of students in CS: ${csStudents.length}. List: ${csStudents.join(', ')}\n`);
       res.write(`Number of students in SWE: ${sweStudents.length}. List: ${sweStudents.join(', ')}`);

@@ -6,12 +6,14 @@ class StudentsController {
   static getAllStudents(request, response) {
     readDatabase(database)
       .then((studentsPerFields) => {
+        response.statusCode = 200;
         const firstline = 'This is the list of our students';
         const message = [];
         for (const [key, value] of Object.entries(studentsPerFields)) {
           message.push(`Number of students in ${key}: ${value.length}. List: ${value.join(', ')}`);
         }
-        response.status(200).send(`${firstline}\n${message.join('\n')}`);
+        console.log(message);
+        response.send(`${firstline}\n${message.join('\n')}`);
       })
       .catch((error) => response.status(500).send(error.message));
   }

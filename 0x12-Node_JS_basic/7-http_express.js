@@ -10,10 +10,10 @@ app.get('/', (req, res) => {
 });
 
 app.get('/students', (req, res) => {
+  res.write('This is the list of our students\n');
   countStudents(database)
     .then((data) => {
       const { students, csStudents, sweStudents } = data;
-      res.write('This is the list of our students\n');
       res.write(`Number of students: ${students.length}\n`);
       res.write(`Number of students in CS: ${csStudents.length}. List: ${csStudents.join(', ')}\n`);
       res.write(`Number of students in SWE: ${sweStudents.length}. List: ${sweStudents.join(', ')}`);
