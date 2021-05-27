@@ -34,7 +34,7 @@ describe('GET /available_payments', () => {
   it('request to /available_payments', (done) => {
     request('http://localhost:7865/available_payments', (err, response, body) => {
       expect(response.statusCode).to.equal(200);
-      expect(JSON.parse(body)).to.deep.equal({ payment_methods: { credit_cards: true, paypal: false } });
+      expect(JSON.parse(body)).to.eql({ payment_methods: { credit_cards: true, paypal: false } });
       done();
     });
   });
@@ -48,7 +48,7 @@ describe('POST /login', () => {
     };
     request.post(options, (err, response, body) => {
       expect(response.statusCode).to.equal(200);
-      expect(body).to.equal('Welcome Betty');
+      expect(body).equals('Welcome Betty');
     }, done());
   });
 });
