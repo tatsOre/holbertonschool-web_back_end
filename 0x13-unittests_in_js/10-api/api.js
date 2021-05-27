@@ -25,9 +25,7 @@ app.get('/available_payments', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-  if (req.body.userName) {
-    res.send(`Welcome ${req.body.userName}`);
-  }
+  res.send(`Welcome ${req.body.userName}`);
 });
 
 app.listen(port, () => {

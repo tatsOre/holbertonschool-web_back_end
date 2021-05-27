@@ -51,4 +51,14 @@ describe('POST /login', () => {
       expect(body).equals('Welcome Betty');
     }, done());
   });
+
+  it('request to /login undefined', (done) => {
+    const options = {
+      url: 'http://localhost:7865/login'
+    };
+    request.post(options, (err, response, body) => {
+      expect(response.statusCode).to.equal(200);
+      expect(body).equals('Welcome undefined');
+    }, done());
+  });
 });
