@@ -59,6 +59,9 @@ const getItemFormat = (item) => ({
 
 const client = redis.createClient();
 /* client.del(['item.1', 'item.2', 'item.3', 'item.4'], function(err, o) {}); */
+client.on('connect', () => {
+  console.log(`Redis client connected to http://localhost:${port}`);
+})
 
 const getAsync = promisify(client.get).bind(client);
 
@@ -82,7 +85,7 @@ const server = express();
 
 server.get('/list_products', (request, response) => {
   const formatted = listProducts.map((item) => getItemFormat(item));
-  response.send(JSON.stringify(formatted));
+  response.json(formatted);
 });
 
 /**
@@ -93,14 +96,14 @@ server.get('/list_products/:itemId', async (request, response) => {
   const { itemId } = request.params;
 
   const item = getItemById(itemId);
-  const stock = await getCurrentReservedStockById(itemId);
+  const reservedStock = await getCurrentReservedStockById(itemId);
 
   if (!item) {
     return response.status(404).json({ status: 'Product not found' });
   }
   const resp = {
     ...getItemFormat(item),
-    currentQuantity: item.stock - stock,
+    currentQuantity: item.stock - reservedStock,
   };
   return response.json(resp);
 });
