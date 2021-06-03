@@ -76,5 +76,5 @@ server.get('/process', async (request, response) => {
 
 server.listen(port, async () => {
   console.log(`'Can I have a seat? app is listening at http://localhost:${port}`);
-  await reserveSeat(5);
+  await reserveSeat(50);
 });
