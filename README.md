@@ -1,5 +1,5 @@
-# Web Stack programming ― Back-end
-### Holberton School - Specializations
+# Web Stack programming > Back-end
+### Holberton School - Advanced Program
 
 ### Content:
 * [0x00. Python - Variable Annotations](https://github.com/tatsOre/holbertonschool-web_back_end/tree/master/0x00-python_variable_annotations)
@@ -27,4 +27,4 @@
 ### Author:
 * Tatiana Orejuela Zapata | [Github](https://github.com/tatsOre)
 
-##### March, 2020.
+##### 2021

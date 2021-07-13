@@ -12,5 +12,5 @@
 ### Author:
 * Tatiana Orejuela Zapata | [Github](https://github.com/tatsOre)
 
-##### Specializations - Web Stack programming ― Back-end
-##### April, 2020.
+##### Advanced program - Web Stack programming > Back-end
+##### April, 2021.
